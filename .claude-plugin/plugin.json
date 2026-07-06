@@ -1,0 +1,8 @@
+{
+  "name": "xmind",
+  "description": "Create and read XMind mind maps (.xmind) from any Claude Code session — stdlib-only Python, no XMind installation required.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Patrik Oskarsson"
+  }
+}

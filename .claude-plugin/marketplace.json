@@ -1,0 +1,13 @@
+{
+  "name": "patrik-plugins",
+  "owner": {
+    "name": "Patrik Oskarsson"
+  },
+  "plugins": [
+    {
+      "name": "xmind",
+      "source": "./",
+      "description": "Create and read XMind mind maps (.xmind) from any Claude Code session — stdlib-only Python, no XMind installation required."
+    }
+  ]
+}
