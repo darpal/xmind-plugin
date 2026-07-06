@@ -1,20 +1,26 @@
 # xmind-plugin
 
-A Claude Code plugin that lets Claude create and read **XMind mind maps** (`.xmind` files) in any project. The XMind format is just a zip of three JSON files, so the bundled builder is stdlib-only Python — no XMind installation, extra packages, or venv required.
+Lets Claude create and read **XMind mind maps** (`.xmind` files). The XMind format is just a zip of three JSON files, so the bundled builder is standard-library-only Python — no XMind installation, extra packages, or venv required.
+
+The core is an **Agent Skill** (`skills/xmind/`), which works on **both** Claude surfaces:
+
+- **Claude Code** — installed as a plugin (this repo doubles as a marketplace).
+- **Claude Desktop / claude.ai / mobile** — uploaded as a Skill (one zip).
+
+Same skill folder, two delivery mechanisms.
 
 ## What's inside
 
-- `skills/xmind/SKILL.md` — the skill: triggers on "mind map / mindmap / .xmind" requests, covers building maps from any content and reading existing ones.
-- `skills/xmind/scripts/xmind_builder.py` — build + read CLI and importable library.
+- `skills/xmind/SKILL.md` — the skill: triggers on "mind map / mindmap / .xmind" requests; builds maps from any content and reads existing ones. Written surface-neutrally so it behaves correctly whether it runs on your local machine or in a sandboxed container.
+- `skills/xmind/scripts/xmind_builder.py` — build + read CLI and importable library (stdlib only).
+- `build-skill-zip.sh` — produces `dist/xmind-skill.zip` for uploading to the Claude apps.
 
-## Install
+## Install in Claude Code
 
-The repo is its own marketplace (`patrik-plugins`).
-
-On any Mac:
+This repo is its own marketplace (`patrik-plugins`).
 
 ```bash
-claude plugin marketplace add darpal/xmind-plugin   # from GitHub (private repo — needs gh/git auth on that Mac)
+claude plugin marketplace add darpal/xmind-plugin   # from GitHub (public)
 # or, on the machine where the repo is checked out locally:
 claude plugin marketplace add ~/local-coding/xmind-plugin
 
@@ -22,6 +28,20 @@ claude plugin install xmind@patrik-plugins --scope user
 ```
 
 Then just ask Claude for a mind map in any session.
+
+## Install in Claude Desktop / claude.ai / mobile
+
+Skills are shared across the Claude apps by your account, so you upload once and it's available on desktop, web, and mobile.
+
+1. Build the upload artifact:
+
+   ```bash
+   ./build-skill-zip.sh        # writes dist/xmind-skill.zip
+   ```
+
+2. In any Claude app: **Settings → Capabilities → Skills** (requires a plan with Skills / code execution enabled), then upload `dist/xmind-skill.zip`.
+
+3. Ask for a mind map. Claude builds the `.xmind` in its sandbox and gives you a downloadable file.
 
 ## CLI usage (standalone)
 
