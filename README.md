@@ -14,7 +14,7 @@ The repo is its own marketplace (`patrik-plugins`).
 On any Mac:
 
 ```bash
-claude plugin marketplace add patrikoskarsson/xmind-plugin   # from GitHub
+claude plugin marketplace add darpal/xmind-plugin   # from GitHub (private repo — needs gh/git auth on that Mac)
 # or, on the machine where the repo is checked out locally:
 claude plugin marketplace add ~/local-coding/xmind-plugin
 
