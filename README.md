@@ -13,7 +13,7 @@ Same skill folder, two delivery mechanisms.
 
 - `skills/xmind/SKILL.md` — the skill: triggers on "mind map / mindmap / .xmind" requests; builds maps from any content and reads existing ones. Written surface-neutrally so it behaves correctly whether it runs on your local machine or in a sandboxed container.
 - `skills/xmind/scripts/xmind_builder.py` — build + read CLI and importable library (stdlib only).
-- `build-skill-zip.sh` — produces `dist/xmind-skill.zip` for uploading to the Claude apps.
+- `build-skill-zip.sh` — produces `dist/xmind-skill.zip` for uploading to the Claude apps. The zip is not committed; it is attached to each [GitHub release](https://github.com/darpal/xmind-plugin/releases).
 
 ## Install in Claude Code
 
@@ -33,13 +33,13 @@ Then just ask Claude for a mind map in any session.
 
 Skills are shared across the Claude apps by your account, so you upload once and it's available on desktop, web, and mobile.
 
-1. Build the upload artifact:
+1. Download `xmind-skill.zip` from the [latest release](https://github.com/darpal/xmind-plugin/releases/latest), or build it yourself:
 
    ```bash
    ./build-skill-zip.sh        # writes dist/xmind-skill.zip
    ```
 
-2. In any Claude app: **Settings → Capabilities → Skills** (requires a plan with Skills / code execution enabled), then upload `dist/xmind-skill.zip`.
+2. In any Claude app: **Settings → Capabilities → Skills** (requires a plan with Skills / code execution enabled), then upload `xmind-skill.zip`.
 
 3. Ask for a mind map. Claude builds the `.xmind` in its sandbox and gives you a downloadable file.
 
